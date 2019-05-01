@@ -206,7 +206,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Cat.cs" />
-    <Compile Include="Models\CatmashContext.cs" />
+    <Compile Include="App_Data\CatmashContext.cs" />
     <Compile Include="Models\Vote.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

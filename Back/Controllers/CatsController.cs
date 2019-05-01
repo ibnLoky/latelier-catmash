@@ -8,6 +8,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Web.Http.Results;
+using System.Web.Mvc;
 using Back.Models;
 
 namespace Back.Controllers
@@ -15,17 +17,23 @@ namespace Back.Controllers
     public class CatsController : ApiController
     {
         private CatmashContext db = new CatmashContext();
-
+        
         // GET: api/Cats
         public IQueryable<Cat> GetCats()
         {
             return db.Cats;
         }
 
-        // GET: api/Cats/5
+        // GET: api/Cats/5, A  random cat if id = 0
         [ResponseType(typeof(Cat))]
         public IHttpActionResult GetCat(int id)
         {
+            if (id == 0)
+            {
+                var cats = db.Cats.ToArray();
+                var rnd = new Random();
+                return Ok(cats[rnd.Next(cats.Length)]);
+            }
             Cat cat = db.Cats.Find(id);
             if (cat == null)
             {
