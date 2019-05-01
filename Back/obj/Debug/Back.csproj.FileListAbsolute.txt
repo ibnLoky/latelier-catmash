@@ -114,3 +114,4 @@ C:\Users\Loki\source\repos\latelier-catmash\Back\bin\EntityFramework.SqlServer.x
 C:\Users\Loki\source\repos\latelier-catmash\Back\bin\System.Data.SQLite.xml
 C:\Users\Loki\source\repos\latelier-catmash\Back\bin\System.Data.SQLite.dll.config
 C:\Users\Loki\source\repos\latelier-catmash\Back\bin\fr\EntityFramework.resources.dll
+C:\Users\Loki\source\repos\latelier-catmash\Back\obj\Debug\Back.csprojAssemblyReference.cache
