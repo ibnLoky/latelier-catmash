@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Back.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +14,15 @@ namespace Back.Controllers
             ViewBag.Title = "Vote";
 
             return View();
+        }
+
+        public ActionResult Results()
+        {
+            CatmashContext db = new CatmashContext();
+
+            ViewBag.Title = "Results";
+            var Model = db.Cats.OrderByDescending(x => x.Elo).ToList();
+            return View(Model);
         }
     }
 }

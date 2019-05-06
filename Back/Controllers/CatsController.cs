@@ -21,7 +21,7 @@ namespace Back.Controllers
         // GET: api/Cats
         public IQueryable<Cat> GetCats()
         {
-            return db.Cats;
+            return db.Cats.OrderByDescending(x => x.Elo);
         }
 
         // GET: api/Cats/5, A  random cat if id = 0

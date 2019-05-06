@@ -10,14 +10,14 @@
         });
 
     var cat2Url;
-        debugger;
+    debugger;
     $.getJSON("api/Cats/0",
-            function (json) {
+            function(json) {
                 debugger;
                 $("#cat2Id").attr('text', json["Id"]);
                 $("#cat2").attr('src', json["PhotoUrl"]);
             })
-        .fail(function () {
+        .fail(function() {
             console.log("error");
         });
     $("#cat2").attr('src', cat2Url);

@@ -76,21 +76,6 @@ namespace Back.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        //// POST: api/Votes
-        //[ResponseType(typeof(Vote))]
-        //public IHttpActionResult PostVote(Vote vote)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    db.Votes.Add(vote);
-        //    db.SaveChanges();
-
-        //    return CreatedAtRoute("DefaultApi", new { id = vote.Id }, vote);
-        //}
-
         [ResponseType(typeof(Vote))]
         public IHttpActionResult PostVote(VoteJson vote)
         {
@@ -101,7 +86,7 @@ namespace Back.Controllers
             Cat against = db.Cats.Find(vote.Against);
             against.Elo -= 25;
             Cat cat = db.Cats.Find(vote.Voted);
-            cat.Elo -= 25;
+            cat.Elo += 25;
             Vote voteDb = new Vote {Against = against, Voted = cat, VotedOn = DateTime.Now};
 
             db.Votes.Add(voteDb);
