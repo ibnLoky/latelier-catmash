@@ -10,7 +10,7 @@ namespace Back.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Vote";
 
             return View();
         }
