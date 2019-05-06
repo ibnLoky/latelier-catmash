@@ -1,13 +1,8 @@
-﻿var cat1Id = 0;
-var cat2Id = 0;
-
-function LoadCats() {
-    //$.getJSON("api/Cats/0").done(function(json) {
-    //    debugger;
+﻿function LoadCats() {
     $.getJSON("api/Cats/0",
             function(json) {
                 debugger;
-                cat1Id = json["Id"];
+                $("#cat1Id").attr('text', json["Id"]);
                 $("#cat1").attr('src', json["PhotoUrl"]);
             })
         .fail(function() {
@@ -15,17 +10,31 @@ function LoadCats() {
         });
 
     var cat2Url;
-    //do {
+        debugger;
     $.getJSON("api/Cats/0",
             function (json) {
                 debugger;
-                cat2Id = json["Id"];
+                $("#cat2Id").attr('text', json["Id"]);
+                $("#cat2").attr('src', json["PhotoUrl"]);
             })
         .fail(function () {
             console.log("error");
         });
-    //} while (cat1Id == cat2Id);
     $("#cat2").attr('src', cat2Url);
+    $("#cat1").on('click',
+        function () {
+            $.post("api/Votes/", { Voted: $("#cat1Id").attr('text'), Against: $("#cat2Id").attr('text') });
+            $("#cat1").off("click");
+            $("#cat2").off("click");
+            LoadCats();
+        });
+    $("#cat2").on('click',
+        function () {
+            $.post("api/Votes/", { Voted: $("#cat2Id").attr('text'), Against: $("#cat1Id").attr('text')});
+            $("#cat1").off("click");
+            $("#cat2").off("click");
+            LoadCats();
+        });
 
 }
 
